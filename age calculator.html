@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precise Age Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            max-width: 400px;
+            background-color: #f9f9f9;
+        }
+        input {
+            margin: 10px 0;
+            padding: 8px;
+            width: calc(100% - 20px);
+        }
+        button {
+            padding: 10px;
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h2>Precise Age Calculator</h2>
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" required>
+    <button onclick="calculateAge()">Calculate Age</button>
+    <div class="result" id="result"></div>
+
+    <script>
+        function calculateAge() {
+            const dobInput = document.getElementById('dob').value;
+            if (!dobInput) {
+                document.getElementById('result').innerText = "Please select a date of birth.";
+                return;
+            }
+
+            const dob = new Date(dobInput);
+            const today = new Date();
+            let ageYears = today.getFullYear() - dob.getFullYear();
+            let ageMonths = today.getMonth() - dob.getMonth();
+            let ageDays = today.getDate() - dob.getDate();
+
+            // Adjust months and years if the current month/day is before the birth month/day
+            if (ageDays < 0) {
+                // Borrow days from the previous month
+                const previousMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+                ageDays += previousMonth.getDate();
+                ageMonths--;
+            }
+
+            if (ageMonths < 0) {
+                ageMonths += 12;
+                ageYears--;
+            }
+
+            document.getElementById('result').innerText = `Your age is ${ageYears} years, ${ageMonths} months, and ${ageDays} days.`;
+        }
+    </script>
+</body>
+</html>
