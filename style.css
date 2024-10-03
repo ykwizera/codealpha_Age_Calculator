@@ -15,14 +15,14 @@ input {
 button {
     padding: 10px;
     width: 100%;
-    background-color: #28a745;
+    background-color: #168326;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 button:hover {
-    background-color: #218838;
+    background-color: #93d4a1;
 }
 .result {
     margin-top: 20px;
