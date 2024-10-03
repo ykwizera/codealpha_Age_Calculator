@@ -27,3 +27,5 @@ A web-based **Precise Age Calculator** that calculates a user's age in years, mo
 
 4. Click the "Calculate Age" button to see your age in years, months, and days.
 
+## Author
+Yvette Kwizera
